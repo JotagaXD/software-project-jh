@@ -3,14 +3,16 @@ from utils.Point import Point
 
 class BaseAgent:
     """Abstract Agent."""
-
-    def __init__(self, id=0, yellow=False):
+    def __init__(self, id = 0, yellow=False):
         self.id = id
         self.robot = Robot()
         self.pos = Point(0, 0)
         self.vel = Point(0, 0)
         self.body_angle = float(0)
         self.targets = []
+        self.sel_pos = Point(0, 0)
+        self.selection = 0
+        self.select = False
         self.yellow = yellow
         self.opponents = dict()
         self.teammates = dict()
@@ -19,9 +21,9 @@ class BaseAgent:
         self.angle_vel = float(0)
 
     def step(self, self_robot : Robot, 
-             opponents: dict[int, Robot] = dict(), 
-             teammates: dict[int, Robot] = dict(), 
-             targets: list[Point] = [], 
+             opponents = dict(), 
+             teammates = dict(), 
+             targets = [], 
              keep_targets=False) -> Robot:
 
         self.reset()
