@@ -13,10 +13,10 @@ class BaseAgent:
         self.sel_pos = Point(0, 0)
         self.selection = 0
         self.select = False
+        self.obstacle = -1
         self.yellow = yellow
         self.opponents = dict()
         self.teammates = dict()
-
         self.next_vel = Point(0, 0)
         self.angle_vel = float(0)
 

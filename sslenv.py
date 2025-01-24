@@ -11,7 +11,7 @@ from random_agent import RandomAgent
 import random
 import pygame
 from utils.CLI import Difficulty
-from closer import sort, distance
+from closer import sort_targets
 
 class SSLExampleEnv(SSLBaseEnv):
     def __init__(self, render_mode="human", difficulty=Difficulty.EASY):
@@ -88,7 +88,7 @@ class SSLExampleEnv(SSLBaseEnv):
 
         # Generate new targets
         if len(self.targets) == 0:
-            sort(self)
+            sort_targets(self)
             
         obstacles = {id: robot for id, robot in self.frame.robots_blue.items()}
         for i in range(0, self.n_robots_yellow):
@@ -117,6 +117,7 @@ class SSLExampleEnv(SSLBaseEnv):
                     random_target.append(Point(x=self.x(), y=self.y()))
 
                 others_actions.append(self.yellow_agents[i].step(self.frame.robots_yellow[i], obstacles, dict(), random_target, True))
+
 
         return myActions + others_actions
 
